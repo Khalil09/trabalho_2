@@ -8,7 +8,7 @@ void tabuleiro(int v[][7])
 	/* Limpa a Tela */
 	system("clear || cls");
 
-	printf(" ==T===F===E===D===C===B===A======\n");
+	printf(" ==T===F===E===D===C===B===A=======\n");
 	printf("(|%2i| [%2i][%2i][%2i][%2i][%2i][%2i] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
 	printf("(|--|--------------------------|--|)\n");
 	printf("(|P1| [%2i][%2i][%2i][%2i][%2i][%2i] |%2i|)\n",
@@ -88,14 +88,14 @@ void turno_p1(int m_valores[][7]){
 	int j_vet, j, n;
 	/* Le a posicao que quer ser realizada a jogada */
 	printf("\nJogador 1 favor realizar sua jogada: ");
-	scanf("%c", &jogada);
+	scanf(" %c", &jogada);
 	getchar();
 	/* Armazena a posicao na coluna de acordo com a referencia passada */
 	j_vet = referencia(jogada);
 	/* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
 	while(m_valores[1][j_vet] == 0){
 		printf("\nJogada invalida, favor informar uma jogada valida: ");
-		scanf("%c", &jogada);
+		scanf(" %c", &jogada);
 		j_vet = referencia(jogada);
 	}
 	
