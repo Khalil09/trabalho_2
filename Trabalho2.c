@@ -37,12 +37,13 @@ int menu(){
 	
 	int escolha;
 	
-	printf("====Bem vindo ao Mancala!====");
-	printf("Escolha uma das opcoes abaixo: ");
+	printf("\n====Bem vindo ao Mancala!====\n");
+	printf("Escolha uma das opcoes abaixo: \n");
 	printf("1. Player vs IA\n2. Player vs Player\n3. IA vs IA\n4. Regras\n>>> ");
 	scanf("%d", &escolha);
-	while((escolha != 1)||(escolha != 2)||(escolha != 3)||(escolha != 4)){
-		printf("\nEscolha invalida! Por favor escolha uma opcao valida.\n");
+
+	while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)){
+		printf("\nEscolha invalida! Por favor escolha uma opcao valida: ");
 		scanf("%d", &escolha);
 	}
 	
@@ -59,47 +60,6 @@ int menu(){
 	}
 	
 	return escolha;
-}
-
-
-
-
-
-
-/* Funcao que administra o turno do jogador 1 */
-void turno_p1(m_valores[][7]){
-	char jogada;
-	int j_vet, j;
-	
-	/* Le a posicao que quer ser realizada a jogada */
-	printf("Jogador 1 favor realizar sua jogada: ");
-	scanf("%c", &jogada);
-	/* Armazena a posicao na coluna de acordo com a referencia passada */
-	j_vet = referencia(jogada);
-	/* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
-	while(m_valores[1][j_vet] == 0){
-		printf("\nJogada invalida, favor informar uma jogada valida: ");
-		scanf("%c", &jogada);
-		j_vet = referencia(jogada);
-	}
-	
-	/* Armazena a quantidade de sementes na casa informada */
-	n = m_valores[1][j_vet];
-	/* Zera o atual */
-	m_valores[1][j_vet] == 0;
-	/* Redistribui as sementes */
-	j = 0;
-	while(n>0){
-		j_vet += 1;
-		if(j_vet > 6){
-			j++;
-			m_valores[0][j_vet-j] += 1;
-		} else{
-			m_valores[1][j_vet] += 1;	
-		}
-		
-		
-	}
 }
 
 /* Informa os valores das referencias do player 1 */
@@ -122,34 +82,107 @@ int referencia(char v){
 	return -1;
 }
 
-
-void turno_p2(){
+/* Funcao que administra o turno do jogador 1 */
+void turno_p1(int m_valores[][7]){
+	char jogada;
+	int j_vet, j, n;
+	/* Le a posicao que quer ser realizada a jogada */
+	printf("\nJogador 1 favor realizar sua jogada: ");
+	scanf("%c", &jogada);
+	getchar();
+	/* Armazena a posicao na coluna de acordo com a referencia passada */
+	j_vet = referencia(jogada);
+	/* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
+	while(m_valores[1][j_vet] == 0){
+		printf("\nJogada invalida, favor informar uma jogada valida: ");
+		scanf("%c", &jogada);
+		j_vet = referencia(jogada);
+	}
 	
+	/* Armazena a quantidade de sementes na casa informada */
+	n = m_valores[1][j_vet];
+	/* Zera o atual */
+	m_valores[1][j_vet] = 0;
+	/* Redistribui as sementes */
+	j = 0;
+	while(n>0){
+		j_vet += 1;
+		if(j_vet > 6){
+			j++;
+			m_valores[0][j_vet-j] += 1;
+			j++;
+			if(j_vet-j == 1){
+				j_vet = 0;
+			}	
+		} else{
+			m_valores[1][j_vet] += 1;	
+		}
+		
+		n -= 1;		
+	}
+	
+	tabuleiro(m_valores);
 }
 
 /* Informa os valores das referencias do player 2, pois é invertido. */
 int referencia2(char v){
 	
 	if((v == 'a')||(v == 'A')){
-		return 5;
+		return 6;
 	}else if((v == 'b')||(v == 'B')){
-		return 4;
+		return 5;
 	}else if((v == 'c')||(v == 'C')){
-		return 3;
+		return 4;
 	}else if((v == 'd')||(v == 'D')){
-		return 2;
+		return 3;
 	}else if((v == 'e')||(v == 'E')){
-		return 1;
+		return 2;
 	}else if((v == 'f')||(v == 'F')){
-		return 0;
+		return 1;
 	}
 	
 	return -1;
-	
-
 }
 
-
+void turno_p2(int m_valores[][7]){
+	char jogada;
+	int j_vet, j, n;
+	/* Le a posicao que quer ser realizada a jogada */
+	printf("\nJogador 2 favor realizar sua jogada: ");
+	scanf("%c", &jogada);
+	getchar();
+	/* Armazena a posicao na coluna de acordo com a referencia passada */
+	j_vet = referencia2(jogada);
+	/* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
+	while(m_valores[0][j_vet] == 0){
+		printf("\nJogada invalida, favor informar uma jogada valida: ");
+		scanf("%c", &jogada);
+		j_vet = referencia2(jogada);
+	}
+	
+	/* Armazena a quantidade de sementes na casa informada */
+	n = m_valores[0][j_vet];
+	/* Zera o atual */
+	m_valores[0][j_vet] = 0;
+	/* Redistribui as sementes */
+	j = 0;
+	while(n>0){
+		j_vet -= 1;
+		if(j_vet < 0){
+			j++;
+			m_valores[1][j_vet+j] += 1;
+			j++;
+			if(j_vet+j==5){
+				j_vet = 6;
+			}
+		} else{
+			m_valores[0][j_vet] += 1;
+		}
+		n -= 1;
+	}
+	
+	tabuleiro(m_valores);
+}
 
 int main()
 {
@@ -166,6 +199,12 @@ int main()
 	}else if(escolha == 2){
 		popular(m_valores);
 		tabuleiro(m_valores);
+		getchar();
+		while(1){
+			turno_p1(m_valores);
+			turno_p2(m_valores);
+		}
+		
 		
 	/*Caso 3 o jogador ira simular uma partida de IA contra IA*/	
 	} else if(escolha == 3){
