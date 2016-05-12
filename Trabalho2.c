@@ -1,5 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
+
+typedef struct no_lista
+{
+	int min_max;
+}t_arvore;
+
 
 /* Imprime o tabuleiro na tela */ 
 void tabuleiro(int v[][7])
@@ -40,11 +48,11 @@ int menu(){
 	system("clear || cls");
 	printf("\n====Bem vindo ao Mancala!====\n");
 	printf("Escolha uma das opcoes abaixo: \n");
-	printf("1. Player vs IA\n2. Player vs Player\n3. IA vs IA\n4. Regras\n>>> ");
+	printf("1. Player vs IA\n2. Player vs Player\n3. IA vs IA\n4. Regras\n5. Sair\n>>> ");
 	scanf("%d", &escolha);
 	getchar();
 
-	while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)){
+	while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)&&(escolha != 5)){
 		printf("\nEscolha invalida! Por favor escolha uma opcao valida: ");
 		scanf("%d", &escolha);
 		getchar();
@@ -57,7 +65,7 @@ int menu(){
 		printf("Mancala é um jogo de tabuleiro anciente, e ha diversos variantes.");
 		printf("Esta é a versao basica do jogo, conhecida como Kalah.\n");
 		printf("\n==Buracos e total==\nOs buracos no tabuleiro inferiores sao referentes ao Jogador 1, e os superiores referente ao Jogador 2");
-		printf("\n\n==Semear Pedras==\nEscolha um buraco para retirar todas suas pedras. Movendo no sentido anti-horario, depoisutando uma em cada buraco");
+		printf("\n\n==Semear Pedras==\nEscolha um buraco para retirar todas suas pedras. Movendo no sentido anti-horario, depositando uma em cada buraco");
 		printf("\n\n==Armazenadas==\nSe voce chegar no seu armazenamento, deposita uma pedra, se chegar no armazenamento do oponente, o pula.");
 		printf("\n\n\nAperte enter para continuar.");
 		getchar();
@@ -93,7 +101,7 @@ int referencia(char v){
 		return 5;
 	}
 	
-	return -1;
+	return (-1);
 }
 
 /* Funcao que administra o turno do jogador 1 */
@@ -107,10 +115,9 @@ void turno_p1(int m_valores[][7]){
 	/* Armazena a posicao na coluna de acordo com a referencia passada */
 	j_vet = referencia(jogada);
 	/* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
-	while(m_valores[1][j_vet] == 0){
+	while(m_valores[1][j_vet] == 0 || j_vet == (-1)){
 		printf("\nJogada invalida, favor informar uma jogada valida: ");
-		scanf("%c", &jogada);
-		getchar();
+		scanf(" %c", &jogada);
 		j_vet = referencia(jogada);
 	}
 	
@@ -121,6 +128,7 @@ void turno_p1(int m_valores[][7]){
 	/* Redistribui as sementes */
 	j = 0;
 	while(n>0){
+		sleep(1);
 		j_vet += 1;
 		if(j_vet > 6){
 			i=0;
@@ -136,6 +144,7 @@ void turno_p1(int m_valores[][7]){
 		}
 		
 		n -= 1;		
+		tabuleiro(m_valores);
 	}
 	
 	if((i == 1) && (m_valores[i][j_vet] == 1) && (m_valores[0][j_vet+1] != 0) && (j_vet != 6)){
@@ -185,10 +194,9 @@ void turno_p2(int m_valores[][7]){
 	/* Armazena a posicao na coluna de acordo com a referencia passada */
 	j_vet = referencia2(jogada);
 	/* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
-	while(m_valores[0][j_vet] == 0){
+	while(m_valores[0][j_vet] == 0 || j_vet == (-1)){
 		printf("\nJogada invalida, favor informar uma jogada valida: ");
-		scanf("%c", &jogada);
-		getchar();
+		scanf(" %c", &jogada);
 		j_vet = referencia2(jogada);
 	}
 	
@@ -199,6 +207,7 @@ void turno_p2(int m_valores[][7]){
 	/* Redistribui as sementes */
 	j = 0;
 	while(n>0){
+		sleep(1);
 		j_vet -= 1;
 		if(j_vet < 0){
 			i=1;
@@ -213,6 +222,7 @@ void turno_p2(int m_valores[][7]){
 			m_valores[0][j_vet] += 1;
 		}
 		n -= 1;
+		tabuleiro(m_valores);
 	}
 	
 	if((i == 0) && (m_valores[i][j_vet] == 1) && (m_valores[1][j_vet-1] != 0) && (j_vet != 0)){
@@ -237,6 +247,7 @@ int main()
 	int escolha, j;
 	
 	/*Imprime o Menu e armazena seu retorno*/
+	while(escolha != 5){
 	escolha = menu();
 	
 	/*Caso o retorno seja 1 o jogador ira jogar contra alguma IA*/
@@ -278,6 +289,6 @@ int main()
 	} else if(escolha == 3){
 		printf("Rekt\n");
 	}
-	
+	}
 	return 0;
 }
