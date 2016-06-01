@@ -3,86 +3,61 @@
 #include <unistd.h>
 #include <string.h>
 
-typedef struct no_lista
-{
+typedef struct no{
 	int min_max;
-}t_arvore;
+	t_lista *l;
+	struct no *esq;
+	struct no *pai;
+}t_no;
+
+typedef struct elemento{
+	int casa;
+	int qtd;
+	struct elemento *prox;
+}t_elemento;
+
+typedef struct lista{
+	t_elemento *primeiro;
+	t_elemento *ultimo;
+}t_lista;
 
 
-/* Imprime o tabuleiro na tela */ 
-void tabuleiro(int v[][7])
-{
-	int i = 0;
-	/* Limpa a Tela */
-	system("clear || cls");
-
-	printf(" ==T===F===E===D===C===B===A=======\n");
-	printf("(|%2i| [%2i][%2i][%2i][%2i][%2i][%2i] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
-	printf("(|--|--------------------------|--|)\n");
-	printf("(|P1| [%2i][%2i][%2i][%2i][%2i][%2i] |%2i|)\n",
-		   v[1][i],v[1][i+1],v[1][i+2],v[1][i+3],v[1][i+4],v[1][i+5],v[1][i+6]);
-	printf(" ======A===B===C===D===E===F====T==\n");
+/* INICIO DAS FUNCOES DO PROBLEMA */
+int minimax(t_raiz *no, int altura){
+	/* ROTINA minimax(nó, profundidade)
+	    SE nó é um nó terminal OU profundidade = 0 ENTÃO
+	        RETORNE o valor da heurística do nó
+	    SENÃO SE o nó representa a jogada de algum adversário ENTÃO
+	        α = +∞
+	        PARA CADA filho DE nó
+	            α = min(α, minimax(filho, profundidade-1))
+	        FIM PARA
+	        RETORNE α
+	    SENÃO
+	        α = -∞
+	        PARA CADA filho DE nó
+	            α ← max(α, minimax(filho, profundidade-1))
+	        FIM PARA
+	        RETORNE α
+	    FIM SE
+	FIM ROTINA */
 }
 
-/*Popula as casinhas com o valor 4 e as casinhas do total com 0*/
-/*Estado inicial do jogo*/
-void popular(int m_valores[][7]){
-	int i,j;
-	
-	for(i = 0; i < 2; i++)
-	{
-		for(j = 0; j < 7; j++)
-		{
-			m_valores[i][j] = 4;
-		}
-	}
-	m_valores[0][0] = 0;
-	m_valores[1][6] = 0;
-}
 
-/* Funcao para mostrar o menu e retornar a opcao selecionada */
-int menu(){
-	
-	int escolha;
-	
-	system("clear || cls");
-	printf("\n====Bem vindo ao Mancala!====\n");
-	printf("Escolha uma das opcoes abaixo: \n");
-	printf("1. Player vs IA\n2. Player vs Player\n3. IA vs IA\n4. Regras\n5. Sair\n>>> ");
-	scanf("%d", &escolha);
-	getchar();
 
-	while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)&&(escolha != 5)){
-		printf("\nEscolha invalida! Por favor escolha uma opcao valida: ");
-		scanf("%d", &escolha);
-		getchar();
-	}
-	
-	/* Mostra o tutorial */
-	if(escolha == 4){
-		system("clear || cls");
-		printf("====Regras====\n\n");
-		printf("Mancala é um jogo de tabuleiro anciente, e ha diversos variantes.");
-		printf("Esta é a versao basica do jogo, conhecida como Kalah.\n");
-		printf("\n==Buracos e total==\nOs buracos no tabuleiro inferiores sao referentes ao Jogador 1, e os superiores referente ao Jogador 2");
-		printf("\n\n==Semear Pedras==\nEscolha um buraco para retirar todas suas pedras. Movendo no sentido anti-horario, depositando uma em cada buraco");
-		printf("\n\n==Armazenadas==\nSe voce chegar no seu armazenamento, deposita uma pedra, se chegar no armazenamento do oponente, o pula.");
-		printf("\n\n\nAperte enter para continuar.");
-		getchar();
-		system("clear || cls");
-		printf("====Regras====");
-		printf("\n\n==Turno Livre==\nSe a sua ultima peca distribuida cair na sua unidade de armazenamento, ganha um outro turno.");
-		printf("\n\n==Captura==\nSe a sua ultima peca distribuida cai em um buraco vazio no seu lado, capture as pecas do inimigo diretamente oposto.");
-		printf("\n\n==Fim==\nO jogo termina quanto todos os seis buracos de algum dos lados estao vazios. O jogador que ainda tiver peca no seu lado, ganha os respectivos pontos.");
-		printf("\n\n==Vitoria==\nO jogador com maiores pecas em seu armazenamento ganha.");
-		printf("\n\n\nAperte enter para encerrar.");
-		getchar();
-		getchar();
-		menu();
-	}
-	
-	return escolha;
-}
+
+/* FIM DAS FUNCOES DO PROBLEMA */
+
+/* INICIO DAS FUNCOES DA ARVORE */
+
+
+
+
+/* FIM DAS FUNCOES DA ARVORE */ 
+
+
+
+/* INICIO DAS FUNCOES PARA O MODO PVP */ 
 
 /* Informa os valores das referencias do player 1 */
 int referencia(char v){
@@ -240,6 +215,95 @@ void turno_p2(int m_valores[][7]){
 	}
 	
 }
+
+/* FIM DAS FUNCOES PARA O MODO PVP */ 
+
+
+
+
+
+/* INICIO DAS FUNCOES DA UI */ 
+
+/* Imprime o tabuleiro na tela */ 
+void tabuleiro(int v[][7])
+{
+	int i = 0;
+	/* Limpa a Tela */
+	system("clear || cls");
+
+	printf(" ==T===F===E===D===C===B===A=======\n");
+	printf("(|%2i| [%2i][%2i][%2i][%2i][%2i][%2i] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
+	printf("(|--|--------------------------|--|)\n");
+	printf("(|P1| [%2i][%2i][%2i][%2i][%2i][%2i] |%2i|)\n",
+		   v[1][i],v[1][i+1],v[1][i+2],v[1][i+3],v[1][i+4],v[1][i+5],v[1][i+6]);
+	printf(" ======A===B===C===D===E===F====T==\n");
+}
+
+/*Popula as casinhas com o valor 4 e as casinhas do total com 0*/
+/*Estado inicial do jogo*/
+void popular(int m_valores[][7]){
+	int i,j;
+	
+	for(i = 0; i < 2; i++)
+	{
+		for(j = 0; j < 7; j++)
+		{
+			m_valores[i][j] = 4;
+		}
+	}
+	m_valores[0][0] = 0;
+	m_valores[1][6] = 0;
+}
+
+/* Funcao para mostrar o menu e retornar a opcao selecionada */
+int menu(){
+	
+	int escolha;
+	
+	system("clear || cls");
+	printf("\n====Bem vindo ao Mancala!====\n");
+	printf("Escolha uma das opcoes abaixo: \n");
+	printf("1. Player vs IA\n2. Player vs Player\n3. IA vs IA\n4. Regras\n5. Sair\n>>> ");
+	scanf("%d", &escolha);
+	getchar();
+
+	while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)&&(escolha != 5)){
+		printf("\nEscolha invalida! Por favor escolha uma opcao valida: ");
+		scanf("%d", &escolha);
+		getchar();
+	}
+	
+	/* Mostra o tutorial */
+	if(escolha == 4){
+		system("clear || cls");
+		printf("====Regras====\n\n");
+		printf("Mancala é um jogo de tabuleiro anciente, e ha diversos variantes.");
+		printf("Esta é a versao basica do jogo, conhecida como Kalah.\n");
+		printf("\n==Buracos e total==\nOs buracos no tabuleiro inferiores sao referentes ao Jogador 1, e os superiores referente ao Jogador 2");
+		printf("\n\n==Semear Pedras==\nEscolha um buraco para retirar todas suas pedras. Movendo no sentido anti-horario, depositando uma em cada buraco");
+		printf("\n\n==Armazenadas==\nSe voce chegar no seu armazenamento, deposita uma pedra, se chegar no armazenamento do oponente, o pula.");
+		printf("\n\n\nAperte enter para continuar.");
+		getchar();
+		system("clear || cls");
+		printf("====Regras====");
+		printf("\n\n==Turno Livre==\nSe a sua ultima peca distribuida cair na sua unidade de armazenamento, ganha um outro turno.");
+		printf("\n\n==Captura==\nSe a sua ultima peca distribuida cai em um buraco vazio no seu lado, capture as pecas do inimigo diretamente oposto.");
+		printf("\n\n==Fim==\nO jogo termina quanto todos os seis buracos de algum dos lados estao vazios. O jogador que ainda tiver peca no seu lado, ganha os respectivos pontos.");
+		printf("\n\n==Vitoria==\nO jogador com maiores pecas em seu armazenamento ganha.");
+		printf("\n\n\nAperte enter para encerrar.");
+		getchar();
+		getchar();
+		menu();
+	}
+	
+	return escolha;
+}
+
+
+/* FIM DAS FUNCOES DA UI */ 
+
+
+
 
 int main()
 {
