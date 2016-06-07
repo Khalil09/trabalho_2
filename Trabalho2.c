@@ -320,7 +320,7 @@ t_no *geraArvore(int m_valores[][7], int dificuldade, t_no *raiz, int *flag)
 				m_aux[i][j] = m_valores[i][j];
 			}
 		}  
-		/* Cria a arvore ate a dificuldade solicitada*/
+		
 		for(i = 1; i < 7; i++)
 		{
 			if(m_aux[0][i] != 0)
