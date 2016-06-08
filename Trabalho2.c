@@ -34,7 +34,7 @@ typedef struct no{
     struct no *filhos[6];
     /* Valor para ser calculado pela funcao minmax */
     int heuristica;
-    /* Flag para saber de qual player eh a jogada(0: Jogador 1 / 1: Jogador 2) */
+    /* Flag para saber de qual player eh a jogada(1: Jogador 1 / 2: Jogador 2) */
     int player;
 }t_no;
 
@@ -391,9 +391,57 @@ void final(int m_valores[][7]){
 
 }
 
+int max(int v1, int v2){
+    if(v1 > v2){
+        return v1;
+    } else {
+        return v2;
+    }
+}
+
+int min(int v1, int v2){
+    if(v1 < v2){
+        return v1;
+    } else{
+        return v2;
+    }
+}
+
+
+int minimax(t_no *no, int dificuldade, int p_max){
+   
+    int i, heur, melhor_valor, qtd_filhos = 0, v;
+   
+    for(i=0;i<6;i++){
+        if(no->filhos[i] != NULL){
+            qtd_filhos += 1;
+        }
+    }
+    
+    if((dificuldade == 0)||(qtd_filhos == 0)){
+        return heur;
+    }
+    
+    if(p_max == 1){
+        melhor_valor = -50;
+        for(i=0;i<6;i++){
+            v = minimax(no->filhos[i], dificuldade - 1, no->filhos[i]->player);
+            melhor_valor = max(melhor_valor, v);
+        }
+        return melhor_valor;
+    } else{
+        melhor_valor = 50;
+        for(i=0;i<6;i++){
+            v = minimax(no->filhos[i], dificuldade - 1, no->filhos[i]->player);
+            melhor_valor = min(melhor_valor, v);
+        }
+        return melhor_valor;
+    }
+}
+
 int main(){
 	int m_valores[2][7];
-	int escolha, i, j, dificuldade;
+	int escolha, i, j, dificuldade, jogada_AI;
     char primeiro;
     t_no *raiz = (t_no*)malloc(sizeof(t_no));
 	
