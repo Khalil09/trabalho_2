@@ -1,3 +1,24 @@
+/*
+ 
+ Universidade de Brasilia - Instituto de Ciencias Exatas
+ Departamento de Ciencia da Computacao
+ Trabalho 2 de Estrutura de Dados - Game Trees
+ Turma A - Professor Eduardo A. P. Alchieri
+ Alunos:
+ - Renato Avellar Nobre 150146698
+ - Khalil Carsten ........
+ 
+ 00 de Junho de 2016
+ 
+ Descricao de organizacao do codigo:
+ Foi utilizado no projeto uma arvore de jogos em que seus nos contem uma struct
+ para um vetor de ponteiros, uma matriz para guardar o estado do jogo, uma flag para armazenar quem ira jogar
+ e uma heuristica para armazenar o valor da jogada.
+ 
+ 
+ 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -5,32 +26,43 @@
 
 int flag;
 
+/* Struct responsavel para armazenar as informacoes nos nos das arvores */
 typedef struct no{
+    /* Matriz para armazenar o estado atual do jogo */
     int mat_estado[2][7];
+     /* Vetor de ponteiros para os filhos */
     struct no *filhos[6];
+    /* Valor para ser calculado pela funcao minmax */
     int heuristica;
     /* Flag para saber de qual player eh a jogada(0: Jogador 1 / 1: Jogador 2) */
     int player;
 }t_no;
 
-
-t_no *cria_no(int mat_aux[][7] ,int p,int heur){
+/*Cria o no da arvores*/
+t_no *cria_no(int mat_aux[][7], int p, int heur){
     int i, j;
-    t_no *n = (t_no*)malloc(sizeof(t_no));
     
+    /* Aloca espaco para uma estrutura t_no */
+    t_no *n = (t_no*)malloc(sizeof(t_no));
+
+    /* Passa a matriz do jogo para a estrutura do no */
     for(i=0;i<2;i++){
         for(j=0;j<7;j++){
             n->mat_estado[i][j] = mat_aux[i][j];
         }
     }
     
+    /* Assume a heuristica passada como parametro */
     n->heuristica = heur;
+    /* Assume o valor da flag passado como parametro */
     n->player = p;
     
+    /* Anula todos os ponteiros do no recem criado */
     for(i=0;i<6;i++){
         n->filhos[i] = NULL;
     }
     
+    /* Retorna o no */
     return n;
 }
 
@@ -49,14 +81,16 @@ void tabuleiro(int v[][7])
     printf(" ======A===B===C===D===E===F====T==\n");
 }
 
+/* Funcao para selecionar a dificuldade desejada caso seja um modo Ia vs P1 */
 void menu_dific(int *dificuldade, char *primeiro){
+    /* Dificuldade, que sera a aultura da arvore */
     printf("Informe o nivel de dificuldade (0-6) que voce pretende jogar: ");
     scanf("%d", dificuldade);
-    
     while((*dificuldade < 0)||(*dificuldade > 6)){
         printf("Erro! Dificuldade nao suportada, favor informar um valor entre 0 e 6");
     }
     
+    /* Define quem vai ser o primeiro a jogar */
     printf("Gostaria de comecar? (S/N)");
     scanf(" %c", primeiro);
     while((*primeiro != 'S')&&(*primeiro != 's')&&(*primeiro != 'N')&&(*primeiro != 'n')){
@@ -70,20 +104,20 @@ int menu(){
     
     int escolha;
     
+    /* Menu principal */
     system("clear || cls");
     printf("\n====Bem vindo ao Mancala!====\n");
     printf("Escolha uma das opcoes abaixo: \n");
     printf("1. Player vs IA\n2. Player vs Player\n3. IA vs IA\n4. Regras\n5. Sair\n>>> ");
     scanf("%d", &escolha);
     getchar();
-    
     while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)&&(escolha != 5)){
         printf("\nEscolha invalida! Por favor escolha uma opcao valida: ");
         scanf("%d", &escolha);
         getchar();
     }
     
-    /* Mostra o tutorial */
+    /* Tutorial */
     if(escolha == 4){
         system("clear || cls");
         printf("====Regras====\n\n");
@@ -109,8 +143,7 @@ int menu(){
     return escolha;
 }
 
-/*Popula as casinhas com o valor 4 e as casinhas do total com 0*/
-/*Estado inicial do jogo*/
+/*Popula as casinhas com o valor 4 e as casinhas do total com 0, (Estado inicial do jogo)*/
 void popular(int m_valores[][7]){
     int i,j;
     
@@ -130,6 +163,9 @@ void popular(int m_valores[][7]){
 /* Informa os valores das referencias do player 1 */
 int referencia(char v){
 	
+    /* Para evitar confusoes as jogadas foram definidas por letras e convertidas
+    para numeros para facilitar o tratamento no codigo */
+
 	if((v == 'a')||(v == 'A')){
 		return 0;
 	}else if((v == 'b')||(v == 'B')){
@@ -148,12 +184,13 @@ int referencia(char v){
 }
 
 
-
 /* Funcao que administra o turno do jogador 1 */
 void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
 	char jogada;
 	int j_vet, total, i, j, n;
 	
+    /* Este if define quem ira jogar, o player ou a IA, de acordo com a 
+     escolha passada no menu */
     if(escolha == 2){
         /* Le a posicao que quer ser realizada a jogada */
         printf("\nJogador 1 favor realizar sua jogada: ");
@@ -167,6 +204,7 @@ void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
             scanf(" %c", &jogada);
             j_vet = referencia(jogada);
         }
+    /* j_vet para P1 vs IA */
     } else{
         j_vet = jogada_AI;
     }
@@ -197,7 +235,9 @@ void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
 		n -= 1;		
 		tabuleiro(m_valores);
 	}
-	
+
+
+    /* Verifica se o p1 pode pegar as sementes do p2 */
 	if((i == 1) && (m_valores[i][j_vet] == 1) && (m_valores[0][j_vet+1] != 0) && (j_vet != 6)){
 		total = m_valores[0][j_vet+1] + m_valores[1][j_vet];
 		m_valores[0][j_vet+1] = 0;
@@ -205,6 +245,7 @@ void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
 		m_valores[1][6] += total;
 	} 
 	
+    /* Verifica se o p1 pode jogar denovo */
 	if((i==1) && (j_vet == 6)){
 		tabuleiro(m_valores);
         flag = 1;
@@ -220,6 +261,10 @@ void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
 /* Informa os valores das referencias do player 2, pois é invertido. */
 int referencia2(char v){
 	
+    
+    /* Para evitar confusoes as jogadas foram definidas por letras e convertidas
+     para numeros para facilitar o tratamento no codigo */
+    
 	if((v == 'a')||(v == 'A')){
 		return 6;
 	}else if((v == 'b')||(v == 'B')){
@@ -237,11 +282,16 @@ int referencia2(char v){
 	return -1;
 }
 
+
+/* Funcao que administra o turno do jogador 1 */
 void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
 	
     char jogada;
 	int j_vet, total, i, j, n;
     
+    
+    /* Este if define quem ira jogar, o player ou a IA, de acordo com a
+     escolha passada no menu */
     if(escolha == 2){
         /* Le a posicao que quer ser realizada a jogada */
         printf("\nJogador 2 favor realizar sua jogada: ");
@@ -284,6 +334,7 @@ void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
         tabuleiro(m_valores);
     }
     
+    /* Verifica se o p2 pode pegar as sementes do p1 */
     if((i == 0) && (m_valores[i][j_vet] == 1) && (m_valores[1][j_vet-1] != 0) && (j_vet != 0)){
         total = m_valores[1][j_vet-1] + m_valores[0][j_vet];
         m_valores[1][j_vet-1] = 0;
@@ -291,6 +342,7 @@ void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
         m_valores[0][0] += total;
     } 
     
+    /* Verifica se o p2 pode jogar denovo */
     if((i==0) && (j_vet == 0)){
         tabuleiro(m_valores);
         flag = 2;
@@ -301,6 +353,7 @@ void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
     }
 }
 
+/* Verifica se algum dos lados do tabuleiro esta vazio para finalizar o jogo */
 int m_vazia(int m_valores[][7]){
     if(((m_valores[0][1] != 0)||(m_valores[0][2] != 0)||(m_valores[0][3] != 0)||(m_valores[0][4] != 0)||(m_valores[0][5] != 0)||(m_valores[0][6] != 0))&&((m_valores[1][0] != 0)||(m_valores[1][1] != 0)||(m_valores[1][2] != 0)||(m_valores[1][3] != 0)||(m_valores[1][4] != 0)||(m_valores[1][5] != 0))){
         return 1;
@@ -311,6 +364,7 @@ int m_vazia(int m_valores[][7]){
     
 }
 
+/* Pega todas as sementes que sobram e coloca no total */
 void final(int m_valores[][7]){
     int i,j;
     
@@ -326,6 +380,7 @@ void final(int m_valores[][7]){
     
     tabuleiro(m_valores);
     
+    /* Imprime a mensagem de vencedor */
     if(m_valores[0][0] > m_valores[1][6]){
         printf("\nParabéns! O Jogador 2 Ganhou!\n");
     } else if(m_valores[0][0] < m_valores[1][6]){
@@ -379,7 +434,7 @@ int main(){
     
         /*Caso 3 o jogador ira simular uma partida de IA contra IA*/
         } else if(escolha == 3){
-            printf("Alahu Akbar\n");
+            printf("Allahu Akbar\n");
         }
 	}
 	return 0;
