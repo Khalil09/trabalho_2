@@ -72,16 +72,15 @@ t_no *cria_no(int mat_aux[][7], int p){
 /* Imprime o tabuleiro na tela */
 void tabuleiro(int v[][7])
 {
-    int i = 0;
-    /* Limpa a Tela */
-    system("clear || cls");
-    
-    printf(" ==T===F===E===D===C===B===A=======\n");
-    printf("(|%2i| [%2i][%2i][%2i][%2i][%2i][%2i] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
-    printf("(|--|--------------------------|--|)\n");
-    printf("(|P1| [%2i][%2i][%2i][%2i][%2i][%2i] |%2i|)\n",
-           v[1][i],v[1][i+1],v[1][i+2],v[1][i+3],v[1][i+4],v[1][i+5],v[1][i+6]);
-    printf(" ======A===B===C===D===E===F====T==\n");
+	int i = 0;
+	/* Limpa a Tela */
+	system("clear || cls");
+
+	printf(" ==T===F===E===D===C===B===A=======\n");
+	printf("(|%2i| [%2i][%2i][%2i][%2i][%2i][%2i] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
+	printf("(|--|--------------------------|--|)\n");
+	printf("(|P1| [%2i][%2i][%2i][%2i][%2i][%2i] |%2i|)\n", v[1][i],v[1][i+1],v[1][i+2],v[1][i+3],v[1][i+4],v[1][i+5],v[1][i+6]);
+	printf(" ======A===B===C===D===E===F====T==\n");
 }
 
 /* Funcao para selecionar a dificuldade desejada caso seja um modo Ia vs P1 */
@@ -160,8 +159,6 @@ void popular(int m_valores[][7]){
     m_valores[0][0] = 0;
     m_valores[1][6] = 0;
 }
-
-
 
 /* Informa os valores das referencias do player 1 */
 int referencia(char v){
@@ -260,7 +257,6 @@ void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
     
 }
 
-
 /* Informa os valores das referencias do player 2, pois é invertido. */
 int referencia2(char v){
     
@@ -284,7 +280,6 @@ int referencia2(char v){
     
     return -1;
 }
-
 
 /* Funcao que administra o turno do jogador 1 */
 void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
@@ -390,8 +385,6 @@ void final(int m_valores[][7]){
     }
 
 }
-
-<<<<<<< HEAD
 
 /*===============================================================================*/
 /*===============================================================================*/
