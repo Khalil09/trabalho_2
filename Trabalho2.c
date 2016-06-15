@@ -48,7 +48,7 @@ t_no *cria_no(int mat_aux[][7], int p, int jogada, int heur){
     /* Aloca espaco para uma estrutura t_no */
     t_no *n = (t_no*)malloc(sizeof(t_no));
 
-    printf("\n\nUm no foi criado\n");
+    //printf("\n\nUm no foi criado\n");
 
     /* Passa a matriz do jogo para a estrutura do no */
     for(i=0;i<2;i++){
@@ -67,7 +67,8 @@ t_no *cria_no(int mat_aux[][7], int p, int jogada, int heur){
     for(i=0;i<6;i++){
         n->filhos[i] = NULL;
     }
-    printf("\nNo Criado, Player: %d\n", n->player);
+    //printf("\nNo Criado, Player: %d\n", n->player);
+    printf("\nNo Criado, heuristica: %d ---\n", n->heuristica);
     /* Retorna o no */
     return n;
 }
@@ -191,7 +192,6 @@ int referencia(char v){
 void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
     char jogada;
     int j_vet, total, i, j, n;
-
     tabuleiro(m_valores);
     /* Este if define quem ira jogar, o player ou a IA, de acordo com a
      escolha passada no menu */
@@ -381,10 +381,13 @@ void final(int m_valores[][7]){
     /* Imprime a mensagem de vencedor */
     if(m_valores[0][0] > m_valores[1][6]){
         printf("\nParabéns! O Jogador 2 Ganhou!\n");
+        getchar();
     } else if(m_valores[0][0] < m_valores[1][6]){
         printf("\nParabéns! O Jogador 1 Ganhou!\n");
+        getchar();
     } else {
         printf("\nEmpate!\n");
+        getchar();
     }
 
 }
@@ -407,14 +410,14 @@ void geraArvore(t_no *raiz, int dificuldade)
 {
     /*Transfere a matriz original do no para a matriz_aux*/
     int i, j, k, mat_aux[2][7];
-    printf("\nGerando Arvore\n");
+    //printf("\nGerando Arvore\n");
 
     simulando = 1;
     
     /* Sao ifs diferentes para cada player, pois os enderecos de jogada na matriz sao diferentes*/
-    printf("Dificuldade Atual: %d\n", dificuldade);
+    //printf("Dificuldade Atual: %d\n", dificuldade);
     if(dificuldade > 0){
-        printf("Flag = %d\n", flag);
+        //printf("Flag = %d\n", flag);
         if(flag == 1)
         {
             for(i = 0; i < 6; i++)
@@ -429,7 +432,7 @@ void geraArvore(t_no *raiz, int dificuldade)
                         }
                     }
                     jog_val = mat_aux[1][6];
-                    turno_p1(mat_aux, 1, i+1);
+                    turno_p1(mat_aux, 1, i);
                     jog_val = mat_aux[1][6] - jog_val;
                     raiz->filhos[i] = cria_no(mat_aux, 1, i, jog_val);
                     geraArvore(raiz->filhos[i], dificuldade-1);
@@ -461,17 +464,16 @@ void geraArvore(t_no *raiz, int dificuldade)
     }
 }
 
- 
-int max(int v1, int v2){
-    if(v1 > v2){
+t_no *max(t_no *v1, t_no *v2){
+    if(v1->heuristica > v2->heuristica){
         return v1;
     } else {
         return v2;
     }
 }
 
-int min(int v1, int v2){
-    if(v1 < v2){
+t_no* min(t_no *v1, t_no *v2){
+    if(v1->heuristica < v2->heuristica){
         return v1;
     } else{
         return v2;
@@ -479,48 +481,55 @@ int min(int v1, int v2){
 }
 
 
-int minimax(t_no *no, int dificuldade){
+t_no *minimax(t_no *no, int dificuldade){
 
-    int i, melhor_valor, qtd_filhos = 0, v;
-
+    int i, qtd_filhos = 0;
+    t_no *v;
+    t_no *melhor_valor = (t_no*)malloc(sizeof(t_no));
     for(i=0;i<6;i++){
         if(no->filhos[i] != NULL){
             qtd_filhos += 1;
         }
     }
 
-    if((dificuldade == 0)||(qtd_filhos == 0)){
-        return no->heuristica;
+    if((dificuldade == 0) || (qtd_filhos == 0)){
+        return no;
     }
 
     if(no->player == 1){
-        melhor_valor = -50;
+        melhor_valor->heuristica = -50;
         for(i=0;i<6;i++){
-            v = minimax(no->filhos[i], dificuldade - 1);
-            melhor_valor = max(melhor_valor, v);
+            if(no->filhos[i] != NULL)
+            {
+                v = minimax(no->filhos[i], dificuldade - 1);
+                melhor_valor = max(melhor_valor, v);
+            }
         }
         return melhor_valor;
     } else{
-        melhor_valor = 50;
+        melhor_valor->heuristica = 50;
         for(i=0;i<6;i++){
-            v = minimax(no->filhos[i], dificuldade - 1);
-            melhor_valor = min(melhor_valor, v);
+            if(no->filhos[i] != NULL)
+            {
+                v = minimax(no->filhos[i], dificuldade - 1);
+                melhor_valor = min(melhor_valor, v);
+            }
         }
         return melhor_valor;
     }
 }
 
-
 int main(){
 	int m_valores[2][7];
-	int escolha, dificuldade, jogada_AI = 0;
+	int escolha, dificuldade,jogada_AI = 0;
     char primeiro;
     t_no *raiz = (t_no*)malloc(sizeof(t_no));
+    t_no *aux;
 
     escolha = 0;
     /*Imprime o Menu e armazena seu retorno*/
-    popular(m_valores);
     while(escolha != 5){
+        popular(m_valores);
         escolha = menu();
 
         /*Caso o retorno seja 1 o jogador ira jogar contra alguma IA*/
@@ -530,16 +539,22 @@ int main(){
             if((primeiro == 'S')||(primeiro == 's')){
                 while(m_vazia(m_valores) == 1){
                     /*O player 1 tem q receber parametro de escolha == 2*/
-                    turno_p1(m_valores, 2, 0);
+                    turno_p1(m_valores, 2, 2);
+                    simulando = 1;
                     raiz = cria_no(m_valores, flag, 0, 0);
                     geraArvore(raiz, dificuldade);
-                    jogada_AI = minimax(raiz, dificuldade);
-                    printf("BEWWW");
+                    
+                    /* Recebe o noh q teoricamente possui a maior heuristica*/
+                    aux = minimax(raiz, dificuldade);
+                    jogada_AI = aux->jogada;
+                    printf("Jogada AI = %d\n", jogada_AI);
+                    printf("player = %d\n", aux->player);
+                    
+                    getchar();
                     simulando = 0;
+                    turno_p2(m_valores, 1, jogada_AI);
                     /*Aqui vai as funcoes Minmax e atribuidora de heuristica*/
                     /*Lembrar de trocar a jogada_AI da funcao de turno_p2*/
-                    
-                    turno_p2(m_valores, escolha, 1);
                 }
             } else{
                 while(m_vazia(m_valores) == 1){
@@ -568,6 +583,7 @@ int main(){
             dificuldade = 5;
             raiz = cria_no(m_valores, flag, 0, 0);
             geraArvore(raiz, dificuldade);
+            printf("Heuri = %d\n", raiz->filhos[4]->heuristica);
             getchar();
             printf("Allahu Akbar\n");
         }
