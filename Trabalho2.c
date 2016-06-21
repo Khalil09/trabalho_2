@@ -24,7 +24,12 @@
 #include <unistd.h>
 #include <string.h>
 
-int flag, simulando, jog_val, jog_val2;
+#define RED "\x1b[31;1m"
+#define RESET "\x1b[0m"
+#define CYAN "\x1b[36m"
+#define MAG "\x1b[35m"
+
+int flag, simulando;
 
 /* Struct responsavel para armazenar as informacoes nos nos das arvores */
 typedef struct no{
@@ -74,11 +79,11 @@ void tabuleiro(int v[][7]) {
     int i = 0;
     if (simulando != 1){
         system("clear || cls");
-        printf(" ==T===F===E===D===C===B===A=======\n");
-        printf("(|%2i| [%2i][%2i][%2i][%2i][%2i][%2i] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
+        printf(" =="RED"T"RESET"==="RED"F"RESET"==="RED"E"RESET"==="RED"D"RESET"==="RED"C"RESET"==="RED"B"RESET"==="RED"A"RESET"=======\n");
+        printf("(|"CYAN"%2i"RESET"| ["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
         printf("(|--|--------------------------|--|)\n");
-        printf("(|P1| [%2i][%2i][%2i][%2i][%2i][%2i] |%2i|)\n", v[1][i],v[1][i+1],v[1][i+2],v[1][i+3],v[1][i+4],v[1][i+5],v[1][i+6]);
-        printf(" ======A===B===C===D===E===F====T==\n");
+        printf("(|P1| ["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"]["MAG"%2i"RESET"] |"CYAN"%2i"RESET"|)\n", v[1][i],v[1][i+1],v[1][i+2],v[1][i+3],v[1][i+4],v[1][i+5],v[1][i+6]);
+        printf(" ======="RED"A"RESET"==="RED"B"RESET"==="RED"C"RESET"==="RED"D"RESET"==="RED"E"RESET"==="RED"F"RESET"==="RED"T"RESET"==\n");
     }
 }
 
@@ -418,6 +423,8 @@ void geraArvore(t_no *raiz, int dificuldade)
 {
     /*Transfere a matriz original do no para a matriz_aux*/
     int i, j, k, mat_aux[2][7];
+
+    int jog_val, jog_val2;
 
     simulando = 1;
     
