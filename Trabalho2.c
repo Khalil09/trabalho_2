@@ -48,8 +48,6 @@ t_no *cria_no(int mat_aux[][7], int p, int jogada, int heur){
     /* Aloca espaco para uma estrutura t_no */
     t_no *n = (t_no*)malloc(sizeof(t_no));
 
-    //printf("\n\nUm no foi criado\n");
-
     /* Passa a matriz do jogo para a estrutura do no */
     for(i=0;i<2;i++){
         for(j=0;j<7;j++){
@@ -67,8 +65,6 @@ t_no *cria_no(int mat_aux[][7], int p, int jogada, int heur){
     for(i=0;i<6;i++){
         n->filhos[i] = NULL;
     }
-    //printf("\nNo Criado, Player: %d\n", n->player);
-    //printf("\nNo Criado, heuristica: %d ---\n", n->heuristica);
     /* Retorna o no */
     return n;
 }
@@ -78,7 +74,6 @@ void tabuleiro(int v[][7]) {
     int i = 0;
     if (simulando != 1){
         system("clear || cls");
-
         printf(" ==T===F===E===D===C===B===A=======\n");
         printf("(|%2i| [%2i][%2i][%2i][%2i][%2i][%2i] |P2|)\n", v[0][i],v[0][i+1],v[0][i+2],v[0][i+3],v[0][i+4],v[0][i+5],v[0][i+6]);
         printf("(|--|--------------------------|--|)\n");
@@ -93,13 +88,15 @@ void menu_dific(int *dificuldade, char *primeiro){
     int escolha;
 
     printf("Porfavor escolha a dificuldade: \n");
-    printf("1 - Nao vai dar, nao\n");
-    printf("2 - Ajuda o maluco que ta doente\n");
-    printf("3 - Que nao vai dar o que porra, sai de casa comi pra crlh!!!\n");
-    printf("4 - BEEEW, TA SAINDO DA JAULA O MONSTRO!!!\n");
+    printf("1 - Trivial\n");
+    printf("2 - Facil\n");
+    printf("3 - Normal\n");
+    printf("4 - Dificil\n");
+    printf("5 - PHD\n");
     scanf("%d", &escolha);
-    while((escolha < 1)||(escolha > 4)){
-        printf("Nao vai dar, nao!!!");
+    while((escolha < 1)||(escolha > 5)){
+        printf("Opcao invalida!! Escolha de novo:");
+        scanf("%d", &escolha);
     }
 
     switch(escolha)
@@ -116,6 +113,9 @@ void menu_dific(int *dificuldade, char *primeiro){
         case 4:
             *dificuldade = 7;
             break;
+        case 5:
+            *dificuldade = 9;
+            break;
     }
 }
 
@@ -128,17 +128,17 @@ int menu(){
     system("clear || cls");
     printf("\n====Bem vindo ao Mancala!====\n");
     printf("Escolha uma das opcoes abaixo: \n");
-    printf("1. Player vs IA\n2. Player vs Player\n3. IA vs IA\n4. Regras\n5. Sair\n>>> ");
+    printf("1. Player vs IA\n2. Player vs Player\n3. Regras\n4. Sair\n>>> ");
     scanf("%d", &escolha);
     getchar();
-    while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)&&(escolha != 5)&&(escolha != 7)){
+    while((escolha != 1)&&(escolha != 2)&&(escolha != 3)&&(escolha != 4)){
         printf("\nEscolha invalida! Por favor escolha uma opcao valida: ");
         scanf("%d", &escolha);
         getchar();
     }
 
     /* Tutorial */
-    if(escolha == 4){
+    if(escolha == 3){
         system("clear || cls");
         printf("====Regras====\n\n");
         printf("Mancala é um jogo de tabuleiro anciente, e ha diversos variantes.");
@@ -214,6 +214,7 @@ int referencia(char v){
 void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
     char jogada;
     int j_vet, total, i, j, n;
+
     tabuleiro(m_valores);
     /* Este if define quem ira jogar, o player ou a IA, de acordo com a
      escolha passada no menu */
@@ -221,7 +222,6 @@ void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
         /* Le a posicao que quer ser realizada a jogada */
         printf("\nJogador 1 favor realizar sua jogada: ");
         scanf(" %c", &jogada);
-        getchar();
         /* Armazena a posicao na coluna de acordo com a referencia passada */
         j_vet = referencia(jogada);
         /* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
@@ -260,6 +260,10 @@ void turno_p1(int m_valores[][7], int escolha, int jogada_AI){
 
         n -= 1;
         tabuleiro(m_valores);
+        if(simulando == 0)
+        {
+            sleep(1);
+        }
     }
 
 
@@ -318,8 +322,7 @@ void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
     if(escolha == 2){
         /* Le a posicao que quer ser realizada a jogada */
         printf("\nJogador 2 favor realizar sua jogada: ");
-        scanf("%c", &jogada);
-        getchar();
+        scanf(" %c", &jogada);
         /* Armazena a posicao na coluna de acordo com a referencia passada */
         j_vet = referencia2(jogada);
         /* Realiza a verificacao se o jogador nao esta escolhendo nenhuma casa vazia */
@@ -331,7 +334,6 @@ void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
      } else {
         j_vet = jogada_AI;
      }
-
     /* Armazena a quantidade de sementes na casa informada */
     n = m_valores[0][j_vet];
     /* Zera o atual */
@@ -355,6 +357,10 @@ void turno_p2(int m_valores[][7], int escolha, int jogada_AI){
         }
         n -= 1;
         tabuleiro(m_valores);
+        if(simulando == 0)
+        {
+           sleep(1);
+        }
     }
 
     /* Verifica se o p2 pode pegar as sementes do p1 */
@@ -412,14 +418,12 @@ void geraArvore(t_no *raiz, int dificuldade)
 {
     /*Transfere a matriz original do no para a matriz_aux*/
     int i, j, k, mat_aux[2][7];
-    //printf("\nGerando Arvore\n");
 
     simulando = 1;
     
     /* Sao ifs diferentes para cada player, pois os enderecos de jogada na matriz sao diferentes*/
-    //printf("Dificuldade Atual: %d\n", dificuldade);
     if(dificuldade > 0){
-        //printf("Flag = %d\n", flag);
+        
         if(flag == 1)
         {
             for(i = 0; i < 6; i++)
@@ -503,9 +507,7 @@ t_no *minimax(t_no *no, int dificuldade){
             if(no->filhos[i] != NULL)
             {
                 v = minimax(no->filhos[i], dificuldade - 1);
-                //printf("MIN: %d %d\n", melhor_valor->heuristica, v->heuristica);
                 melhor_valor = min(melhor_valor, v);
-                //printf("Melhor_valor %d\n", melhor_valor->heuristica);
             }
         }
         return melhor_valor;
@@ -515,9 +517,7 @@ t_no *minimax(t_no *no, int dificuldade){
             if(no->filhos[i] != NULL)
             {
                 v = minimax(no->filhos[i], dificuldade - 1);
-                //printf("MaX: %d %d\n", melhor_valor->heuristica, v->heuristica);
                 melhor_valor = max(melhor_valor, v);
-                //printf("Melhor_valor %d\n", melhor_valor->heuristica);
             }
         }
         return melhor_valor;
@@ -533,7 +533,7 @@ int main(){
 
     escolha = 0;
     /*Imprime o Menu e armazena seu retorno*/
-    while(escolha != 5){
+    while(escolha != 4){
         popular(m_valores);
         escolha = menu();
 
@@ -544,15 +544,13 @@ int main(){
             while(m_vazia(m_valores) == 1){
                 /*O player 1 tem q receber parametro de escolha == 2*/
                 turno_p1(m_valores, 2, 2);
+                simulando = 1;
                 raiz = cria_no(m_valores, flag, 0, 0);
+                printf("Calculando...\n");
                 geraArvore(raiz, dificuldade);
                 /* Recebe o noh q teoricamente possui a maior heuristica*/
                 aux = minimax(raiz, dificuldade);
                 jogada_AI = aux->jogada;
-                printf("MINMAX = %d\n", aux->heuristica);
-                printf("Jogada AI = %d\n", jogada_AI);
-                printf("player = %d\n", aux->player);
-                getchar();
                 simulando = 0;
                 turno_p2(m_valores, 1, jogada_AI);
                 /*Aqui vai as funcoes Minmax e atribuidora de heuristica*/
@@ -572,16 +570,6 @@ int main(){
             final(m_valores);
 
             getchar();
-
-        /*Caso 3 o jogador ira simular uma partida de IA contra IA*/
-        } else if(escolha == 3){
-            dificuldade = 5;
-            raiz = cria_no(m_valores, flag, 1, -50);
-            geraArvore(raiz, dificuldade);
-            simulando = 0;
-            tabuleiro(raiz->filhos[0]->filhos[0]->filhos[1]->mat_estado);
-            getchar();
-            printf("Allahu Akbar\n");
         }
     }
     return 0;

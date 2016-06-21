@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.19)  21 JUN 2016 02:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.19)  21 JUN 2016 08:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1174,243 +1174,155 @@ Missing character: There is no � in font cmr5!
 Missing character: There is no � in font cmr5!
 Missing character: There is no � in font cmr5!
 Missing character: There is no � in font cmr5!
-! Undefined control sequence.
-l.101 		\Procedure
-                  {$turno_px(matriz, escolha, jogada_AI)$}
-? 
-! Undefined control sequence.
-l.102 			\State
-               {$tabuleiro(matriz)$}
-? 
-! Undefined control sequence.
-l.103 			\If
-            {(simulando = FALSE)}
-? 
-! Undefined control sequence.
-l.104 				\State
-                {Seleciona Jogada}
-? 
-! Undefined control sequence.
-l.105 			\Else
-              
-? 
-! Undefined control sequence.
-l.106 				\State
-                 $jogada \gets jogada_AI$
-? 
-! Undefined control sequence.
-l.107 			\Endif
-               
-? 
-! Undefined control sequence.
-l.108 			\State
-                $n \gets matriz[x][jogada]$
-? 
-! Undefined control sequence.
-l.109 			\State
-                $matriz[x][jogada] \gets 0$
-? 
-! Undefined control sequence.
-l.110 			\While
-               {$n > 0$}
-? 
-! Undefined control sequence.
-l.111 				\State
-                {Destribui as Sementes}
-? 
-! Undefined control sequence.
-l.112 			\EndWhile
-                  
-? 
-! Undefined control sequence.
-l.113 			\If
-            {captura sementes = TRUE}
-? 
-! Undefined control sequence.
-l.114 				\State
-                {Incrementa Total}
-? 
-! Undefined control sequence.
-l.115 				\State
-                {Zera a Cavidade do Oponente}
-? 
-! Undefined control sequence.
-l.116 				\State
-                {Zera a Cavidade do Jogador}
-? 
-! Undefined control sequence.
-l.117 			\EndIf
-               
-? 
-! Undefined control sequence.
-l.118 			\If
-            {Ultima Semente Cai na Kahala}
-? 
-! Undefined control sequence.
-l.119 				\State
-                {$tabuleiro(matriz)$}
-? 
-! Undefined control sequence.
-l.120 				\State
-                {$turno_px(matriz, escolha, jogada_AI)$}
-? 
-! Undefined control sequence.
-l.121 			\EndIf
-               
-? 
-! Undefined control sequence.
-l.122 		\EndProcedure
-                     
-? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.126 ...ostra a mensagem de vitória ou derrota.}
+l.100 ...ostra a mensagem de vitória ou derrota.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.126 ...ostra a mensagem de vitória ou derrota.}
+l.100 ...ostra a mensagem de vitória ou derrota.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.126 ...ostra a mensagem de vitória ou derrota.}
+l.100 ...ostra a mensagem de vitória ou derrota.}
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.127 
+l.101 
       
 ? 
 Missing character: There is no � in font cmr5!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \text@ ...e {\textdef@ \displaystyle \f@size {#1}}
                                                   {\textdef@ \textstyle \f@s...
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \text@ ...xtstyle \f@size {\firstchoice@false #1}}
                                                   {\textdef@ \textstyle \sf@...
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \text@ ...tstyle \sf@size {\firstchoice@false #1}}
                                                   {\textdef@ \textstyle \ssf...
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \text@ ...style \ssf@size {\firstchoice@false #1}}
                                                   \check@mathfonts }
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 \text@ ...firstchoice@false #1}}\check@mathfonts }
                                                   
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.130 ...ós, foi feita a função \emph{criaNo}.}
+l.104 ...ós, foi feita a função \emph{criaNo}.}
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.131 
+l.105 
       
 ? 
 Missing character: There is no � in font cmr5!
@@ -1427,229 +1339,229 @@ Missing character: There is no � in font cmr5!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...e {\textdef@ \displaystyle \f@size {#1}}
                                                   {\textdef@ \textstyle \f@s...
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...xtstyle \f@size {\firstchoice@false #1}}
                                                   {\textdef@ \textstyle \sf@...
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...tstyle \sf@size {\firstchoice@false #1}}
                                                   {\textdef@ \textstyle \ssf...
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...style \ssf@size {\firstchoice@false #1}}
                                                   \check@mathfonts }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...firstchoice@false #1}}\check@mathfonts }
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...e {\textdef@ \displaystyle \f@size {#1}}
                                                   {\textdef@ \textstyle \f@s...
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...xtstyle \f@size {\firstchoice@false #1}}
                                                   {\textdef@ \textstyle \sf@...
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...tstyle \sf@size {\firstchoice@false #1}}
                                                   {\textdef@ \textstyle \ssf...
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...th {#1}\let \f@size #2\selectfont #3}
                                                   }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...style \ssf@size {\firstchoice@false #1}}
                                                   \check@mathfonts }
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 \text@ ...firstchoice@false #1}}\check@mathfonts }
                                                   
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.132 ...rai-se resultando assim, na heurística.}
+l.106 ...rai-se resultando assim, na heurística.}
                                                    %Falar sobre a gera arvore
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.133 
+l.107 
       
 ? 
 Missing character: There is no � in font cmr5!
@@ -1662,284 +1574,326 @@ Missing character: There is no � in font cmr5!
 Missing character: There is no � in font cmr5!
 Missing character: There is no � in font cmr5!
 ! Undefined control sequence.
-l.134 		\texrm
+l.108 		\texrm
               {A função \emph{minimax} foi a última a ser implementada e ...
 
 ? 
+! Undefined control sequence.
+l.110 		\texrm
+              {Encerrando a lógica do modo \emph{Player vs IA} após a a es...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.110 ... introduzimos na função \emph{turno_p2}
+                                                  . Por devir o \emph{loop} ...
+
+? 
+! Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.110 ... introduzimos na função \emph{turno_p2}
+                                                  . Por devir o \emph{loop} ...
+
+? 
+! Extra }, or forgotten $.
+l.110 ...a se repete até o encerramento do jogo.}
+                                                  
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.111 
+      
+? 
+Missing character: There is no � in font cmr5!
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
+                           
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.112 	\section{Conclusão}
+                           
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 Missing character: There is no � in font cmr5!
@@ -1948,325 +1902,325 @@ Missing character: There is no � in font cmr5!
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing { inserted.
 <to be read again> 
                    $
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.136 	\section{Conclusão}
+l.112 	\section{Conclusão}
                            
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.142 ...ogos, https://en.wikipedia.org/wiki/Game_
+l.118 ...ogos, https://en.wikipedia.org/wiki/Game_
                                                   tree
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.143 
+l.119 
       
 ? 
 
@@ -2284,13 +2238,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 ### simple group (level 1) entered at line 86 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 20411 strings out of 494996
- 442333 string characters out of 6180489
- 544325 words of memory out of 5000000
- 23239 multiletter control sequences out of 15000+600000
+ 20407 strings out of 494996
+ 442287 string characters out of 6180489
+ 545326 words of memory out of 5000000
+ 23235 multiletter control sequences out of 15000+600000
  21982 words of font info for 53 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 62i,56n,92p,1441b,634s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,56n,92p,1441b,649s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/khalil/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.
 600pk> </home/khalil/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </h
 ome/khalil/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/khalil
