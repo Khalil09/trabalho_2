@@ -8,6 +8,7 @@
 \usepackage{fancyhdr}
 \usepackage{circuitikz}
 \usepackage{tikz}
+\usepackage{float}
 \usepackage{authblk}
 \usepackage{geometry}
 \usepackage[colorinlistoftodos]{todonotes}
@@ -83,6 +84,12 @@
 		\textrm{Com o propósito de entender por total o funcionamento e regras do jogo, um tempo foi gasto realizando seu estudo. Para isso foi utilizado uma versão online do jogo, a mesma versão nos forneceu as regras, a quais foram utilizadas na seção \emph{Regras}, do programa. [3]}
 		
 		\textrm{O código é feito de maneira a tentar maximizar a separação da lógica da interface, contendo diversas funções para mostrar as mensagens na tela, disponibilizadas no começo do código, \emph{tabuleiro}, \emph{menu}, \emph{menu_dific}. Tais funções servem respectivamente para mostrar o tabuleiro na tela, mostrar o menu principal e o menu de regras, e mostrar o menu após o modo \emph{Player vs IA} ser escolhido. Há também uma função \emph{popular}, que preenche o tabuleiro com os valores iniciais do jogo.}
+
+		\begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.6]{Figura1.png}
+                \caption{Figura 1}
+        \end{figure}
 		
 		\textrm{O jogo foi primeiramente implementado em uma versão jogador contra jogador, \emph{Player vs Player}, para verificar se a lógica implementada para o funcionamento estaria correta e concisa, dirimindo erros desnecessários na hora de implementar a árvore. Ao implementar o tabuleiro do jogo, foi decidido utilizar uma matriz 2 por 7, o que na visão dos desenvolvedores, facilíta o entendimento, devido a sua disposição espacial ser equivalente ao do tabuleiro.}
 		
@@ -122,9 +129,11 @@
 		
 		\textrm{A estrutura básica do nó, foi recebendo parametros novos de acordo com a necessidade, no final do projeto obtivemos um nó com \emph{mat_estado}, \emph{no *filhos}, \emph{heuristica}, \emph{player}, \emph{jogada}. \emph{mat_estado} é a matriz do estado atual do jogo, \emph{no *filhos}, é um vetor de ponteiros de nós, após bastante debate, foi definido que esse seria o jeito mais prático e eficiente de definir os filhos, pois trabalhariamos apenas com as quantidades necessárias. \emph{heuristica}, é o valor da jogada, \emph{player}, quem está jogando no momento, jogador 1 ou jogador 2, e \emph{jogada} define qual a jogada foi feita para gerar o mat_estado. Para realizar o preenchimento dos nós, foi feita a função \emph{criaNo}.}
 	
-		\textrm{} %Falar sobre a gera arvore
+		\textrm{Para implementar a função geradora da árvore implementamos uma função recursiva \emph{geraArvore} que recebe um nó previamente criado para servir de raiz de origem para a geração de outros nós. Incialmente definimos um critério de parada para o \emph{loop} recursivo, para isso utilizamos a variável \emph{dificuldade}. Ao entrar na função checa-se se a dificuldade é maior que zero, se sim, então prossegue-se com a criação de nós e para cada chamada da função \emph{dificuldade-1} é passado. Após passar por esse teste o algoritmo procede para um loop do tipo \emph{for} que testará atravéz das possibilidades de jogadas, encontradas na matriz, se é possível criar um nó para aquele \emph{filho}, ou seja, se a casa no tabuleiro for diferente de zero, então cria-se um filho respectivo a posição daquela casa. Assim passamos a matriz do tabuleiro atual para uma \emph{mat_aux} para que possamos simular para cada nó um jogada usando as funções \emph{turno_p1} ou \emph{turno_p2}. Para saber qual das funções anteriores utilizar para simular a jogada criamos um marcador global com o nome de \emph{flag} que assim sendo 1 ou 2 saberiamos qual delas utilizar. O último detalhe é a atribuição da heuristica para cada nó. Toda vez que se cria um nó analisa-se a jogada anterior e a atual e subtrai-se resultando assim, na heurística.} %Falar sobre a gera arvore
 		
-		\texrm{} %falar sobre a minimax e suas dependencias
+		\texrm{A função \emph{minimax} foi a última a ser implementada e passou por diversas mudanças. Incialmente é importante esclarecer que ela retorna um ponteiro do tipo nó. Ao entrar na função cada nó passa por um \emph{loop} do tipo \emph{for} onde se checa se o nó é uma folha ou não. Isso faz parte do primeiro teste da função, onde se testa se a \emph{dificuldade}, ou seja,  altura da árvore, é maior que zero e se o nó é uma folha. Caso passe no teste o procedimento levará para um outro \emph{loop} que irá passar por todos os nós e seus respectivos filhos aplicando a lógica da função \emph{Min} e \emph{Max}. Para isso foram criados duas funçoes auxiliares chamadas de \emph{Max} que retorna o maior dos valores e o \emph{Min} que retorn o menor dos valores. Ao final do processo o valor de retorno é um nó que possui a melhor heurística.} %falar sobre a minimax e suas dependencias
+
+		\texrm{Encerrando a lógica do modo \emph{Player vs IA} após a a escolha do nó com melhor heurística este representa um filho dentre os 6 criados para cada elemento, e como cada filho representa uma possibilidade de jogada automaticamente detectamos qual será a seleção de jogada e a introduzimos na função \emph{turno_p2}. Por devir o \emph{loop} de chamar a \emph{geraArvore}, \emph{minmax} e selecionar a jogada se repete até o encerramento do jogo.}
 
 	\section{Conclusão}
 		\textrm{Árvore de jogos é uma alternativa viavel para implementação de uma inteligencia artificial básica, utilizando a possibilidade de cálcular jogadas futuras para tentar prever as jogadas do inimigo e planejar suas próprias.}

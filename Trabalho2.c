@@ -438,10 +438,6 @@ void geraArvore(t_no *raiz, int dificuldade)
                     raiz->filhos[i] = cria_no(mat_aux, 1, i, jog_val);
                     geraArvore(raiz->filhos[i], dificuldade-1);
                 }
-                else
-                {
-                    raiz->filhos[i] = NULL;
-                }
             }
         }
         else
@@ -477,7 +473,7 @@ t_no *max(t_no *v1, t_no *v2){
     }
 }
 
-t_no* min(t_no *v1, t_no *v2){
+t_no *min(t_no *v1, t_no *v2){
     if(v1->heuristica < v2->heuristica){
         return v1;
     } else{
