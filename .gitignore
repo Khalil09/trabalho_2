@@ -213,3 +213,7 @@ TSWLatexianTemp*
 
 # KBibTeX
 *~[0-9]*
+
+# Image Files
+*.png
+*.jpg
