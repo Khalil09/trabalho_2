@@ -6,6 +6,9 @@
 #define CYAN "\x1b[36m"
 #define MAG "\x1b[35m"
 
+//
 void tabuleiro(int v[][7]);
+//
 void menu_dific(int *dificuldade, char *primeiro);
+//
 int menu();
