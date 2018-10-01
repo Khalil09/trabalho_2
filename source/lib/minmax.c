@@ -121,6 +121,7 @@ t_no *minimax(t_no *no, int dificuldade){
         return no;
     }
 
+    // New Comment
     if(no->player == 1){
         melhor_valor->heuristica = 50;
         for(i=0;i<6;i++){
