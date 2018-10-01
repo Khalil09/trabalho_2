@@ -15,8 +15,13 @@ typedef struct no{
     int jogada;
 }t_no;
 
+//
 t_no *cria_no(int mat_aux[][7], int p, int jogada, int heur);
+//
 t_no *max(t_no *v1, t_no *v2);
+//
 t_no *min(t_no *v1, t_no *v2);
+//
 t_no *minimax(t_no *no, int dificuldade);
+//
 void geraArvore(t_no *raiz, int dificuldade);
